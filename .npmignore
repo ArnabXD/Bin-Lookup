@@ -1,0 +1,6 @@
+src/
+.prettierrc.json
+.prettierignore
+.vscode/
+.github/
+.eslintrc.json
