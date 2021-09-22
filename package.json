@@ -1,5 +1,5 @@
 {
-  "name": "bin-lookup",
+  "name": "@xdbots/bin-lookup",
   "version": "1.0.0",
   "description": "Search bin details from various bin database",
   "main": "lib/index.js",
