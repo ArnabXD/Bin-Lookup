@@ -6,7 +6,7 @@
 
 - [bins.ws](http://bins.ws)
 - [binov.net](http://binov.net)
-- [bins.su](htt[://bins.su])
+- [bins.su](http://bins.su)
 
 ### Installation
 
@@ -39,6 +39,6 @@ binLookup(439129).then((data)=> console.log(data));
 
 ### API
 
-- binLookup
+- #### binLookup
   - `bin` : `number`
-  - `site` : `string` (Supported Websites. Default `bins.ws`)
+  - `site` : `string` - [Supported Websites](#available-sources). Default `bins.ws`)
