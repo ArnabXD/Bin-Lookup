@@ -4,8 +4,9 @@
 
 ### Available Sources
 
-- bins.ws
-- binov.net
+- [bins.ws](http://bins.ws)
+- [binov.net](http://binov.net)
+- [bins.su](htt[://bins.su])
 
 ### Installation
 

@@ -8,42 +8,32 @@ import { Result } from '../types';
 export default async (bin: number): Promise<Result> => {
   const response = await axios({
     method: 'POST',
-    url: 'http://binov.net/',
+    url: 'http://bins.su/',
     headers: {
       // prettier-ignore
-      'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
       'accept-language': 'en-US,en;q=0.9',
       'cache-control': 'max-age=0',
       'content-type': 'application/x-www-form-urlencoded',
       'upgrade-insecure-requests': '1',
     },
-    data: `BIN=${bin}&COUNTRY=1&BANK=1`,
+    data: `action=searchbins&bins=${bin}&bank=&country=`,
   });
 
   if (!response.data) return CustomError('Failed to fetch data');
 
   const $ = cheerio.load(response.data);
-
-  if (!$('form.logo table:nth-child(3)').text()) {
+  const result = $('#result').html();
+  if (!result || !result.match('Total found 1 bins')) {
     return NotFound;
   }
 
-  const vendor = $(
-    'form.logo table:nth-child(3) tr:nth-child(2) td:nth-child(2)'
-  ).text();
-  const bank = $(
-    'form.logo table:nth-child(3) tr:nth-child(2) td:nth-child(3)'
-  ).text();
-  const type = $(
-    'form.logo table:nth-child(3) tr:nth-child(2) td:nth-child(4)'
-  ).text();
-  const level = $(
-    'form.logo table:nth-child(3) tr:nth-child(2) td:nth-child(5)'
-  ).text();
-  const country = $(
-    'form.logo table:nth-child(3) tr:nth-child(2) td:nth-child(6)'
-  ).text();
-  const countryInfo = emoji.countryCode(iso.whereCountry(country)?.alpha2!);
+  const country = $('#result tr:nth-child(2) td:nth-child(2)').text();
+  const vendor = $('#result tr:nth-child(2) td:nth-child(3)').text();
+  const type = $('#result tr:nth-child(2) td:nth-child(4)').text();
+  const level = $('#result tr:nth-child(2) td:nth-child(5)').text();
+  const bank = $('#result tr:nth-child(2) td:nth-child(6)').text();
+  const countryInfo = emoji.countryCode(country);
 
   return {
     result: true,
@@ -51,15 +41,15 @@ export default async (bin: number): Promise<Result> => {
     data: {
       bin,
       vendor,
-      bank,
       type,
       level,
-      country,
+      bank,
+      country: iso.whereAlpha2(country)?.country.toString()!,
       countryInfo: {
-        code: countryInfo.code,
+        name: countryInfo.name.toUpperCase(),
         emoji: countryInfo.emoji,
-        name: countryInfo.name,
         unicode: countryInfo.unicode,
+        code: countryInfo.code,
       },
     },
   };
