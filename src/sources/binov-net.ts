@@ -20,7 +20,9 @@ export default async (bin: number): Promise<Result> => {
     data: `BIN=${bin}&COUNTRY=1&BANK=1`,
   });
 
-  if (!response.data) return CustomError('Failed to fetch data');
+  if (!response.data) {
+    return CustomError('Failed to fetch data');
+  }
 
   const $ = cheerio.load(response.data);
 
@@ -43,7 +45,9 @@ export default async (bin: number): Promise<Result> => {
   const country = $(
     'form.logo table:nth-child(3) tr:nth-child(2) td:nth-child(6)'
   ).text();
-  const countryInfo = emoji.countryCode(iso.whereCountry(country)?.alpha2!);
+  const countryInfo = emoji.countryCode(
+    iso.whereCountry(country)?.alpha2 as string
+  );
 
   return {
     result: true,

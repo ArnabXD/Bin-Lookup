@@ -7,7 +7,9 @@ import { Result } from '../types';
 
 export default async (bin: number): Promise<Result> => {
   const response = await axios.get(`https://bins.ws/search?bins=${bin}`);
-  if (!response.data) return CustomError('Failed to fetch data');
+  if (!response.data) {
+    return CustomError('Failed to fetch data');
+  }
 
   const $ = cheerio.load(response.data);
 
@@ -32,9 +34,9 @@ export default async (bin: number): Promise<Result> => {
       type,
       level,
       bank,
-      country: iso.whereAlpha2(country)?.country.toString()!,
+      country: iso.whereAlpha2(country)?.country.toUpperCase() as string,
       countryInfo: {
-        name: countryInfo.name.toUpperCase(),
+        name: countryInfo.name,
         emoji: countryInfo.emoji,
         unicode: countryInfo.unicode,
         code: countryInfo.code,

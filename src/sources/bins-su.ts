@@ -20,7 +20,9 @@ export default async (bin: number): Promise<Result> => {
     data: `action=searchbins&bins=${bin}&bank=&country=`,
   });
 
-  if (!response.data) return CustomError('Failed to fetch data');
+  if (!response.data) {
+    return CustomError('Failed to fetch data');
+  }
 
   const $ = cheerio.load(response.data);
   const result = $('#result').html();
@@ -44,9 +46,9 @@ export default async (bin: number): Promise<Result> => {
       type,
       level,
       bank,
-      country: iso.whereAlpha2(country)?.country.toString() ?? 'UNKNOWN',
+      country: iso.whereAlpha2(country)?.country.toUpperCase() as string,
       countryInfo: {
-        name: countryInfo.name.toUpperCase(),
+        name: countryInfo.name,
         emoji: countryInfo.emoji,
         unicode: countryInfo.unicode,
         code: countryInfo.code,
