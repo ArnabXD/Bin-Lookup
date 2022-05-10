@@ -65,7 +65,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm run test:build
+        run: pnpm run build
   
   publish:
     runs-on: ubuntu-latest
