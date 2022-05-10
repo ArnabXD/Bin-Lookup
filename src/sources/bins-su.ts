@@ -46,9 +46,9 @@ export default async (bin: number): Promise<Result> => {
       type,
       level,
       bank,
-      country: iso.whereAlpha2(country)?.country.toString() as string,
+      country: iso.whereAlpha2(country)?.country.toUpperCase() as string,
       countryInfo: {
-        name: countryInfo.name.toUpperCase(),
+        name: countryInfo.name,
         emoji: countryInfo.emoji,
         unicode: countryInfo.unicode,
         code: countryInfo.code,

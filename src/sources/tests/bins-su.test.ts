@@ -1,9 +1,9 @@
 import ava from 'ava';
-import binov from '../binov-net';
+import binssu from '../bins-su';
 import { NotFound } from '../../errors';
 
 ava('found', async test => {
-  test.deepEqual(await binov(439129), {
+  test.deepEqual(await binssu(439129), {
     result: true,
     message: 'Search Successful',
     data: {
@@ -24,5 +24,5 @@ ava('found', async test => {
 });
 
 ava('not found', async test => {
-  test.deepEqual(await binov(121212), NotFound);
+  test.deepEqual(await binssu(121212), NotFound);
 });
