@@ -22,7 +22,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Run Linter
         run: pnpm run lint
@@ -42,7 +42,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Run Ava Tests
         run: pnpm run test
@@ -62,7 +62,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build
         run: pnpm run build
@@ -83,7 +83,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       
       - name: Typescript Build
         run: pnpm run build
@@ -108,7 +108,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       
       - name: Build TGVCBot
         run: pnpm run build
