@@ -110,12 +110,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
       
-      - name: Build TGVCBot
+      - name: Build @arnabxd/bin-lookup
         run: pnpm run build
       
       - name: Pack Build
         run: |
-          mv $(pnpm pack) archive.tgz
+          mv $(npm pack) archive.tgz
       - uses: softprops/action-gh-release@v1
         with:
           files: archive.tgz
