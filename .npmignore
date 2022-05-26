@@ -5,3 +5,5 @@ src/
 .vscode/
 .github/
 .eslintrc.json
+tsconfig.json
+tsconfig.build.json
