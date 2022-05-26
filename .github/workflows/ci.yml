@@ -84,9 +84,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
-      
-      - name: Typescript Build
-        run: pnpm run build
 
       - name: Publish
         run: npm publish
