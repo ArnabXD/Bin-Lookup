@@ -17,4 +17,4 @@ export interface Result {
   };
 }
 
-export type Sites = 'binov.net' | 'bins.ws';
+export type Sites = 'binov.net' | 'bins.ws' | 'bins.su';

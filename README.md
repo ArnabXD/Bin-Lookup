@@ -6,6 +6,7 @@
 
 - [bins.ws](http://bins.ws)
 - [binov.net](http://binov.net)
+- [bins.su](http://bins.su)
 
 ### Installation
 
