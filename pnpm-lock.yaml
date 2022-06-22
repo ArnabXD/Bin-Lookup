@@ -14,7 +14,7 @@ specifiers:
   eslint-config-prettier: 8.5.0
   esm: 3.2.25
   iso-3166-1: ^2.1.1
-  prettier: 2.6.2
+  prettier: 2.7.1
   rimraf: 3.0.2
   ts-node: 10.8.1
   typescript: 4.7.2
@@ -35,7 +35,7 @@ devDependencies:
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
   esm: 3.2.25
-  prettier: 2.6.2
+  prettier: 2.7.1
   rimraf: 3.0.2
   ts-node: 10.8.1_bduezlpfhhu2salo6sf734d7nq
   typescript: 4.7.2
@@ -1723,8 +1723,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.6.2:
-    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
