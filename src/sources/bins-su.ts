@@ -1,7 +1,9 @@
 import cheerio from 'cheerio';
 import axios from 'axios';
-import iso from 'iso-3166-1';
 import emoji from 'emoji-flags';
+
+import { alphaToCountry } from '../utils';
+
 import { NotFound, CustomError } from '../errors';
 import { Result } from '../types';
 
@@ -46,7 +48,7 @@ export default async (bin: number): Promise<Result> => {
       type,
       level,
       bank,
-      country: iso.whereAlpha2(country)?.country.toUpperCase() as string,
+      country: alphaToCountry(country),
       countryInfo: {
         name: countryInfo.name,
         emoji: countryInfo.emoji,
